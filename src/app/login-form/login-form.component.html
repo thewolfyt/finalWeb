@@ -1,0 +1,66 @@
+<p style="text-align:center; font-size:30px"> Sign Up Form</p>
+
+<div class="container">
+
+<div class="row">
+<br>
+<div>
+
+
+</div>
+<br>
+
+<br>
+<form method="POST" #myForm = "ngForm" (ngSubmit) = "onSubmit(myForm)">
+
+
+<div>
+    <label for="username" class="control-label" [class.text-danger]= "!username.valid" >Username: </label>
+
+<input type="text" name="username"  #username="ngModel" [(ngModel)]= "login.username" class="form-control" required />
+</div>
+
+<div *ngIf= "username.errors?.required">
+<span  class="text-danger">
+    Warning: Username is required!
+</span>
+</div>
+
+<div>
+    <label for="password" class="control-label" [class.text-danger]= "!password.valid" >Password: </label>
+
+<input type="password" name="password"  #password="ngModel" [(ngModel)]= "login.password" class="form-control" pattern= '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'  required />
+</div>
+
+<div *ngIf= "password.errors?.required">
+    <span  class="text-danger">
+        Warning: Passsword is required!
+    </span>
+    </div>
+    <div *ngIf= "password.errors?.pattern">
+        <span  class="text-danger">
+            Warning: Passsword must contain:
+            <br>
+            At least 8 characters in length
+            <br>
+            Lowercase letters    <br>
+            Uppercase letters    <br>
+            Numbers    <br>
+            Special characters!
+        </span>
+        </div>
+
+
+
+
+<br>
+<div>
+<input type="submit" name="save" value= "save"  />
+</div>
+
+
+
+</form>
+
+</div>
+</div>
