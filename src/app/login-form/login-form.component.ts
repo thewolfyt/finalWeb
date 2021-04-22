@@ -39,15 +39,18 @@ password: "ee1$wRwwwwwe"
     this.login.password = bcrypt.hashSync(this.login.password, 10);
 }
   onSubmit(myForm: NgForm){
-//u can do any action here
+
 this.loginSave={
 
   username: myForm.value.username,
 password: myForm.value.password,
 
 }
+if (true){
 
-this.router.navigate(['/ContactUS']);
+  this.router.navigate(['/contactUs']);
+}
+
               
   }
 }

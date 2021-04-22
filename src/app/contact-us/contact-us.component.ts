@@ -26,7 +26,7 @@ export class ContactUSComponent implements OnInit {
       
       };
   }
-  nSubmit(myForm: NgForm){
+  onSubmit(myForm: NgForm){
    
     this.contactSave={
     
