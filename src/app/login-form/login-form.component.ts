@@ -33,7 +33,7 @@ password: "ee1$wRwwwwwe"
 
   DoLogin()
 {
-    console.log(this.login.password);
+
 
     const salt = bcrypt.genSaltSync(10);
     this.login.password = bcrypt.hashSync(this.login.password, 10);
