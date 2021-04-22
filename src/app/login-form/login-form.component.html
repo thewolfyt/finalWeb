@@ -1,4 +1,4 @@
-<p style="text-align:center; font-size:30px"> Sign Up Form</p>
+<p style="text-align:center; font-size:30px"> Login Form</p>
 
 <div class="container">
 
@@ -7,9 +7,14 @@
 <div>
 
 
+
+
 </div>
 <br>
 
+<div *ngIf="myForm.submitted">
+Saved Info:  {{loginSave | json}}
+</div>
 <br>
 <form method="POST" #myForm = "ngForm" (ngSubmit) = "onSubmit(myForm)">
 
@@ -51,8 +56,7 @@
         </div>
 
 
-
-
+<!-- validation -->
 <br>
 <div>
 <input type="submit" name="save" value= "save"  />

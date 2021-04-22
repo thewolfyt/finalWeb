@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {loginDetail} from '../loginDetail';
 import {NgForm} from '@angular/forms';
+import * as bcrypt from 'bcryptjs';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -13,34 +15,39 @@ import {NgForm} from '@angular/forms';
 
 export class LoginFormComponent implements OnInit {
 
-constructor() { }
+constructor(private router: Router) { }
 
 login: loginDetail;
 loginSave: loginDetail;
-
+success = false;
+loginFailed = false;
 
 ngOnInit(): void {
 
 this.login = {
 username: "example",
-firstName: "example",
-lastName: "example",
-email: "eee@fj.com",
 password: "ee1$wRwwwwwe"
 
 };
   }
 
+  DoLogin()
+{
+    console.log(this.login.password);
+
+    const salt = bcrypt.genSaltSync(10);
+    this.login.password = bcrypt.hashSync(this.login.password, 10);
+}
   onSubmit(myForm: NgForm){
 //u can do any action here
 this.loginSave={
 
   username: myForm.value.username,
 password: myForm.value.password,
-firstName: myForm.value.firstName,
-lastName: myForm.value.lastName,
-email: myForm.value.email
+
 }
 
+this.router.navigate(['/ContactUS']);
+              
   }
 }

@@ -1,0 +1,83 @@
+
+
+<p style="text-align:center; font-size:30px"> Contact US</p>
+
+<div class="container">
+
+<div class="row">
+<br>
+<div>
+
+
+
+
+</div>
+<br>
+
+<div *ngIf="myForm.submitted">
+Saved Info:  {{contactSave | json}}
+</div>
+
+<br>
+<form method="POST" #myForm = "ngForm" (ngSubmit) = "onSubmit(myForm)">
+
+<!-- Group -->
+
+<div ngModelGroup = "fullName">
+
+    <div>
+        <label for="name" class="control-label" [class.text-danger]= "!name.valid" > Name: </label>
+    
+    <input type="text" name="name"  #name= "ngModel"  [(ngModel)]= "contact.name" pattern="[a-zA-Z ]*" required/>
+    </div>
+    <!-- validation -->
+    <div *ngIf= "name.errors?.required">
+        <span  class="text-danger">
+            Warning: Name is required!
+        </span>
+        </div>
+        <div *ngIf= "name.errors?.pattern">
+            <span  class="text-danger">
+                Warning: Name can can only include letters!
+            </span>
+            </div>
+        <!-- validation -->
+    
+
+    <!-- validation -->
+    
+    </div>
+    
+    <div>
+        <label for="email" class="control-label" [class.text-danger]= "!email.valid" >Email: </label>
+    <input type="email" name="email" #email ="ngModel"  [(ngModel)]= "contact.email" email required/>
+    </div>
+    <!-- validation -->
+    <div *ngIf= "email.errors?.required">
+        <span  class="text-danger">
+            Warning: Email is required!
+        </span>
+        </div>
+
+        <div>
+            <label for="message" class="control-label" [class.text-danger]= "!message.valid" >Message: </label>
+        <input type="text" name="message" #message ="ngModel"  [(ngModel)]= "contact.message" message required/>
+        </div>
+        <!-- validation -->
+        <div *ngIf= "message.errors?.required">
+            <span  class="text-danger">
+                Warning: message is required!
+            </span>
+            </div>
+
+        <br>
+<div>
+<input type="submit" name="save" value= "save"  />
+</div>
+
+
+
+</form>
+
+</div>
+</div>
