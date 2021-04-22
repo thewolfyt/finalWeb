@@ -3,7 +3,9 @@ import {loginDetail} from '../loginDetail';
 import {NgForm} from '@angular/forms';
 import * as bcrypt from 'bcryptjs';
 import { Router, ActivatedRoute } from '@angular/router';
-
+import { map } from 'rxjs/operators';
+ import { interval } from 'rxjs';
+ import { JwtHelperService } from '@auth0/angular-jwt';
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
@@ -38,6 +40,9 @@ password: "ee1$wRwwwwwe"
     const salt = bcrypt.genSaltSync(10);
     this.login.password = bcrypt.hashSync(this.login.password, 10);
 }
+
+
+
   onSubmit(myForm: NgForm){
 
 this.loginSave={
